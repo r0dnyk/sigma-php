@@ -8,8 +8,6 @@ class Student
     protected string $lastName;
     protected int $group;
     protected int $mark;
-    protected bool $isScientificWork = false;
-
 
     public function __construct(string $firstName, string $lastName, int $group, int $mark)
     {
@@ -37,10 +35,9 @@ class Aspirant extends Student
 }
 
 $student = [
-    new Student('Jack', 'London', 22, 5),
-    new Aspirant('Alan', 'Parker', 14, 5)
+    new Student('Jack', 'London', 22, 4),
+    new Aspirant('Alan', 'Parker', 14, 4)
 ];
-
 
 foreach ($student as $value) {
     echo $value->getScholarship() . PHP_EOL;
