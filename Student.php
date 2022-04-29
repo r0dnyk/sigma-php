@@ -7,7 +7,7 @@ class Student
     protected string $firstName;
     protected string $lastName;
     protected int $group;
-    protected int $mark;
+    public int $mark;
 
     public function __construct(string $firstName, string $lastName, int $group, int $mark)
     {
@@ -24,19 +24,25 @@ class Student
 
 }
 
-class Aspirant extends Student
+class Aspirant
 {
+    protected object $object;
     protected bool $isScientificWork = true;
+
+    public function __construct(string $firstName, string $lastName, int $group, int $mark)
+    {
+        $this->object = new Student($firstName, $lastName, $group, $mark);
+    }
 
     public function getScholarship(): int
     {
-        return $this->mark === 5 ? 200 : 180;
+        return $this->object->mark === 5 ? 200 : 180;
     }
 }
 
 $student = [
-    new Student('Jack', 'London', 22, 4),
-    new Aspirant('Alan', 'Parker', 14, 4)
+    new Student('Jack', 'London', 22, 5),
+    new Aspirant('Alan', 'Parker', 14, 5)
 ];
 
 foreach ($student as $value) {
